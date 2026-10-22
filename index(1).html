@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOLE — Premium Footwear</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- ★ Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ===== LOADING SCREEN ===== -->
+<div id="loader">
+  <div style="text-align:center">
+    <div class="loader-logo">SOLE</div>
+    <div class="loader-sub">Premium Footwear</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    <div class="loader-img-count" id="loader-msg">Preparing your experience...</div>
+  </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="nav-logo" onclick="showPage('home')">SOLE <span>™</span></div>
+  <div class="nav-links" id="nav-links">
+    <a href="#" class="active"  onclick="showPage('home');  closeMobileMenu(); return false;">Home</a>
+    <a href="#"                 onclick="showPage('men');   closeMobileMenu(); return false;">Men</a>
+    <a href="#"                 onclick="showPage('women'); closeMobileMenu(); return false;">Women</a>
+    <a href="#"                 onclick="showPage('auth');  closeMobileMenu(); return false;">Login / Signup</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-bar-nav">
+      <i class="fa fa-search"></i>
+      <input type="text" id="search-input" placeholder="Search shoes…" oninput="handleSearch(this.value)" />
+    </div>
+    <button class="nav-icon-btn" onclick="showPage('auth')" title="Account">
+      <i class="fa fa-user"></i>
+    </button>
+    <button class="nav-icon-btn" onclick="showPage('cart')" title="Cart">
+      <i class="fa fa-bag-shopping"></i>
+      <span class="cart-badge" id="cart-count">0</span>
+    </button>
+    <button class="dark-toggle" onclick="toggleTheme()" title="Toggle dark mode"></button>
+    <button class="hamburger" onclick="toggleMobileMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== TOAST NOTIFICATIONS ===== -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- ==============================================================
+     PAGE: HOME
+============================================================== -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-content">
+      <div class="hero-tag"><i class="fa fa-star"></i> New Collection 2025</div>
+      <h1>Step Into <em>Extraordinary</em> Style</h1>
+      <p>Premium footwear crafted for those who refuse to compromise on comfort, quality, or elegance. Every pair tells a story.</p>
+      <br>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('men')">  <i class="fa fa-arrow-right"></i> Shop Men</button>
+        <button class="btn-outline" onclick="showPage('women')"><i class="fa fa-heart"></i> Shop Women</button>
+      </div>
+      <div class="hero-stats">
+      <div class="hero-stat"><div class="num">2K+</div><div class="lbl">Products</div></div>
+      <div class="hero-stat"><div class="num">50K+</div><div class="lbl">Customers</div></div>
+      <div class="hero-stat"><div class="num">4.9★</div><div class="lbl">Rating</div></div>
+    </div>
+    </div>
+    <!-- Decorative SVG Shoe -->
+    <img class="hero-shoe-svg" src="Men's/nguy-n-duy-h-ng-JIVDJ5xZrWA-unsplash.jpg" alt="Premium Footwear" />
+  </section>
+
+  <!-- CATEGORIES STRIP -->
+  <section class="categories-strip">
+    <div class="section-header">
+      <span class="section-tag">Browse By Category</span>
+      <h2>Find Your Perfect Fit</h2>
+      <p>From casual sneakers to elegant heels — explore every style.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="showPage('men')">  <div class="cat-icon"><i class="fa fa-shoe-prints"></i></div>   <h4>Sneakers</h4>  <span>Men</span></div>
+      <div class="cat-card" onclick="showPage('men')">  <div class="cat-icon"><i class="fa fa-briefcase"></i></div>     <h4>Formal</h4>    <span>Men</span></div>
+      <div class="cat-card" onclick="showPage('men')">  <div class="cat-icon"><i class="fa fa-person-running"></i></div><h4>Sports</h4>    <span>Men</span></div>
+      <div class="cat-card" onclick="showPage('men')">  <div class="cat-icon"><i class="fa fa-droplet"></i></div>       <h4>Flip Flops</h4><span>Men</span></div>
+      <div class="cat-card" onclick="showPage('men')">  <div class="cat-icon"><i class="fa fa-leaf"></i></div>          <h4>Sandals</h4>   <span>Men</span></div>
+      <div class="cat-card" onclick="showPage('women')"><div class="cat-icon"><i class="fa fa-star"></i></div>          <h4>Heels</h4>     <span>Women</span></div>
+      <div class="cat-card" onclick="showPage('women')"><div class="cat-icon"><i class="fa fa-heart"></i></div>         <h4>Flats</h4>     <span>Women</span></div>
+      <div class="cat-card" onclick="showPage('women')"><div class="cat-icon"><i class="fa fa-gem"></i></div>           <h4>Boots</h4>     <span>Women</span></div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="products-section">
+    <div class="section-header">
+      <span class="section-tag">Featured Collection</span>
+      <h2>Bestsellers This Season</h2>
+      <p>Handpicked favourites loved by thousands of customers.</p>
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProducts('all',   this)">All</button>
+      <button class="filter-btn"        onclick="filterProducts('men',   this)">Men</button>
+      <button class="filter-btn"        onclick="filterProducts('women', this)">Women</button>
+      <button class="filter-btn"        onclick="filterProducts('new',   this)">New Arrivals</button>
+      <button class="filter-btn"        onclick="filterProducts('sale',  this)">Sale</button>
+    </div>
+    <div class="products-grid" id="featured-grid"></div>
+  </section>
+
+  <!-- TRENDING -->
+  <section class="trending-section">
+    <div class="trending-text">
+      <span class="section-tag" style="background:rgba(200,134,58,.15);border-color:rgba(200,134,58,.3)">🔥 Trending Now</span>
+      <h2>What's Hot This Month</h2>
+      <p>Stay ahead of the fashion curve with our most-wanted styles. Updated every week with fresh picks.</p>
+      <button class="btn-primary" onclick="showPage('men')"><i class="fa fa-fire"></i> Shop Trending</button>
+    </div>
+    <div class="trending-cards" id="trending-cards"></div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="section-header">
+      <span class="section-tag">Customer Stories</span>
+      <h2>What Our Customers Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Absolutely in love with my Oxford shoes. Premium quality and delivered in just 2 days. Best purchase of the year!"</p>
+        <div class="reviewer"><div class="reviewer-avatar">AK</div><div><div class="reviewer-name">Arjun Kumar</div><div class="reviewer-tag">Verified Purchase</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"The stilettos are gorgeous and actually comfortable! Found my go-to brand for heels. Packaging was beautiful too."</p>
+        <div class="reviewer"><div class="reviewer-avatar">PR</div><div><div class="reviewer-name">Priya Rajan</div><div class="reviewer-tag">Verified Purchase</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★☆</div>
+        <p>"Great running shoes. Lightweight and breathable. Ordered size 10 and fits perfectly. Highly recommend SOLE!"</p>
+        <div class="reviewer"><div class="reviewer-avatar">MV</div><div><div class="reviewer-name">Manoj Verma</div><div class="reviewer-tag">Verified Purchase</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;letter-spacing:.15em;color:#f0b05a">SOLE ™</div>
+        <p>Premium footwear for every occasion. Crafted with passion, worn with confidence. Step into a world where quality meets style.</p>
+        <div class="social-links">
+          <a class="social-link" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Men</h5>
+        <a href="#" onclick="showPage('men');return false">Casual Shoes</a>
+        <a href="#" onclick="showPage('men');return false">Formal Shoes</a>
+        <a href="#" onclick="showPage('men');return false">Sports Shoes</a>
+        <a href="#" onclick="showPage('men');return false">Flip Flops</a>
+        <a href="#" onclick="showPage('men');return false">Sandals</a>
+      </div>
+      <div class="footer-col">
+        <h5>Women</h5>
+        <a href="#" onclick="showPage('women');return false">Heels</a>
+        <a href="#" onclick="showPage('women');return false">Flats</a>
+        <a href="#" onclick="showPage('women');return false">Boots</a>
+        <a href="#" onclick="showPage('women');return false">Sneakers</a>
+        <a href="#" onclick="showPage('women');return false">Flip Flops</a>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <a href="#">Size Guide</a>
+        <a href="#">Track Order</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQ</a>
+        <a href="#" onclick="showPage('auth');return false">My Account</a>
+        <a href="mailto:support@sole.com">support@sole.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 SOLE™ Footwear. All rights reserved. Made with ❤️ for a College Mini Project.</p>
+      <p>Privacy Policy · Terms of Service</p>
+    </div>
+  </footer>
+</div><!-- /page-home -->
+
+
+<!-- ==============================================================
+     PAGE: MEN
+============================================================== -->
+<div class="page" id="page-men">
+  <div class="menu-page">
+    <div class="menu-hero">
+      <div class="hero-bg-pattern"></div>
+      <div class="menu-hero-content">
+        <div class="hero-tag"><i class="fa fa-crown"></i> Men's Collection</div>
+        <h1>Step Up, <em style="color:#f0b05a;font-style:italic">Gentleman</em></h1>
+        <p>From boardroom to boulevard — shoes for every occasion</p>
+      </div>
+    </div>
+    <div class="menu-body" id="men-body"></div>
+  </div>
+  <footer>
+    <div class="footer-bottom" style="border:none;padding:20px 60px;">
+      <p>© 2025 SOLE™ Footwear</p>
+      <button onclick="showPage('home')" style="color:#f0b05a;font-size:.85rem;">← Back to Home</button>
+    </div>
+  </footer>
+</div><!-- /page-men -->
+
+
+<!-- ==============================================================
+     PAGE: WOMEN
+============================================================== -->
+<div class="page" id="page-women">
+  <div class="menu-page">
+    <div class="menu-hero">
+      <div class="hero-bg-pattern"></div>
+      <div class="menu-hero-content">
+        <div class="hero-tag"><i class="fa fa-heart"></i> Women's Collection</div>
+        <h1>Walk With <em style="color:#f0b05a;font-style:italic">Grace</em></h1>
+        <p>Elegant, comfortable, and utterly beautiful footwear</p>
+      </div>
+    </div>
+    <div class="menu-body" id="women-body"></div>
+  </div>
+  <footer>
+    <div class="footer-bottom" style="border:none;padding:20px 60px;">
+      <p>© 2025 SOLE™ Footwear</p>
+      <button onclick="showPage('home')" style="color:#f0b05a;font-size:.85rem;">← Back to Home</button>
+    </div>
+  </footer>
+</div><!-- /page-women -->
+
+
+<!-- ==============================================================
+     PAGE: AUTH (Login / Sign Up)
+============================================================== -->
+<div class="page" id="page-auth">
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">SOLE ™</div>
+      <div class="auth-sub">Your journey to perfect footwear starts here</div>
+      <div class="auth-tabs">
+        <div class="auth-tab active" onclick="switchAuthTab('login', this)">Login</div>
+        <div class="auth-tab"        onclick="switchAuthTab('signup',this)">Sign Up</div>
+      </div>
+
+      <!-- LOGIN -->
+      <div class="auth-form active" id="form-login">
+        <div class="form-group">
+          <label>Email Address</label>
+          <div class="form-input-wrap">
+            <i class="fa fa-envelope"></i>
+            <input type="email" class="form-input" id="login-email" placeholder="you@example.com" />
+          </div>
+          <div class="form-error" id="err-login-email">Please enter a valid email.</div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="form-input-wrap">
+            <i class="fa fa-lock"></i>
+            <input type="password" class="form-input" id="login-pass" placeholder="Enter your password" />
+          </div>
+          <div class="form-error" id="err-login-pass">Password must be at least 6 characters.</div>
+        </div>
+        <div class="remember-row">
+          <label class="checkbox-label"><input type="checkbox" /> Remember me</label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+        <button class="auth-submit" onclick="handleLogin()">Login to Account</button>
+        <div class="or-divider">or continue with</div>
+        <div class="social-auth">
+          <button class="social-auth-btn"><i class="fab fa-google"     style="color:#ea4335"></i> Google</button>
+          <button class="social-auth-btn"><i class="fab fa-facebook-f" style="color:#1877f2"></i> Facebook</button>
+        </div>
+      </div>
+
+      <!-- SIGNUP -->
+      <div class="auth-form" id="form-signup">
+        <div class="form-group">
+          <label>Full Name</label>
+          <div class="form-input-wrap">
+            <i class="fa fa-user"></i>
+            <input type="text" class="form-input" id="signup-name" placeholder="Your full name" />
+          </div>
+          <div class="form-error" id="err-signup-name">Name is required.</div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <div class="form-input-wrap">
+            <i class="fa fa-envelope"></i>
+            <input type="email" class="form-input" id="signup-email" placeholder="you@example.com" />
+          </div>
+          <div class="form-error" id="err-signup-email">Please enter a valid email.</div>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <div class="form-input-wrap">
+            <i class="fa fa-phone"></i>
+            <input type="tel" class="form-input" id="signup-phone" placeholder="+91 9876543210" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="form-input-wrap">
+            <i class="fa fa-lock"></i>
+            <input type="password" class="form-input" id="signup-pass" placeholder="Create a strong password" />
+          </div>
+          <div class="form-error" id="err-signup-pass">Password must be at least 6 characters.</div>
+        </div>
+        <button class="auth-submit" onclick="handleSignup()">Create Account</button>
+        <div class="or-divider">or sign up with</div>
+        <div class="social-auth">
+          <button class="social-auth-btn"><i class="fab fa-google"     style="color:#ea4335"></i> Google</button>
+          <button class="social-auth-btn"><i class="fab fa-facebook-f" style="color:#1877f2"></i> Facebook</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-auth -->
+
+
+<!-- ==============================================================
+     PAGE: CART
+============================================================== -->
+<div class="page" id="page-cart">
+  <div class="cart-page">
+    <div class="cart-container">
+      <div>
+        <div class="cart-header">
+          <h1>Shopping Cart</h1>
+          <p id="cart-subtitle">0 items in your cart</p>
+        </div>
+        <div class="cart-items" id="cart-items-list"></div>
+      </div>
+      <div class="cart-summary">
+        <h3>Order Summary</h3>
+        <div class="summary-row"><span>Subtotal</span><span id="sum-subtotal">₹0</span></div>
+        <div class="summary-row"><span>Shipping</span><span style="color:var(--green)">FREE</span></div>
+        <div class="summary-row"><span>Discount</span><span id="sum-discount" style="color:var(--green)">-₹0</span></div>
+        <div class="summary-row total"><span>Total</span><span id="sum-total">₹0</span></div>
+        <div class="promo-row" style="margin-top:18px">
+          <label>Promo Code</label>
+          <div class="promo-input-wrap">
+            <input type="text" class="promo-input" id="promo-code" placeholder="Try: SOLE10" />
+            <button class="promo-btn" onclick="applyPromo()">Apply</button>
+          </div>
+        </div>
+        <button class="checkout-btn" onclick="showPage('payment')">
+          <i class="fa fa-lock"></i> Proceed to Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-cart -->
+
+
+<!-- ==============================================================
+     PAGE: PAYMENT
+============================================================== -->
+<div class="page" id="page-payment">
+  <div class="payment-page">
+    <div class="payment-container">
+
+      <div class="payment-form">
+        <h1>Secure Checkout</h1>
+        <div class="payment-methods">
+          <label>Payment Method</label>
+          <div class="method-cards">
+            <div class="method-card active" onclick="selectMethod(this,'card')"><i class="fa fa-credit-card"></i><span>Card</span></div>
+            <div class="method-card"        onclick="selectMethod(this,'upi')"> <i class="fa fa-mobile-alt"></i> <span>UPI</span></div>
+            <div class="method-card"        onclick="selectMethod(this,'net')"> <i class="fa fa-university"></i> <span>Net Banking</span></div>
+            <div class="method-card"        onclick="selectMethod(this,'cod')"> <i class="fa fa-truck"></i>      <span>Cash on Delivery</span></div>
+          </div>
+        </div>
+
+        <div class="payment-details" id="pd-card">
+          <h3><i class="fa fa-credit-card" style="color:var(--accent);margin-right:8px"></i>Card Details</h3>
+          <div class="payment-field"><label>Cardholder Name</label><input type="text" class="payment-input" placeholder="Name as on card" /></div>
+          <div class="payment-field"><label>Card Number</label><input type="text" class="payment-input" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)" /></div>
+          <div class="payment-row">
+            <div class="payment-field"><label>Expiry</label><input type="text" class="payment-input" placeholder="MM / YY" maxlength="7" /></div>
+            <div class="payment-field"><label>CVV</label>  <input type="text" class="payment-input" placeholder="•••"      maxlength="3" /></div>
+          </div>
+        </div>
+
+        <div class="payment-details" id="pd-upi" style="display:none">
+          <h3><i class="fa fa-mobile-alt" style="color:var(--accent);margin-right:8px"></i>UPI Payment</h3>
+          <div class="payment-field"><label>UPI ID</label><input type="text" class="payment-input" placeholder="yourname@upi" /></div>
+          <p style="font-size:.8rem;color:var(--text3);margin-top:8px">Supports GPay, PhonePe, Paytm, BHIM and all UPI apps.</p>
+        </div>
+
+        <div class="payment-details" id="pd-net" style="display:none">
+          <h3><i class="fa fa-university" style="color:var(--accent);margin-right:8px"></i>Net Banking</h3>
+          <div class="payment-field">
+            <label>Select Bank</label>
+            <select class="payment-input">
+              <option>State Bank of India</option><option>HDFC Bank</option>
+              <option>ICICI Bank</option><option>Axis Bank</option>
+              <option>Kotak Mahindra Bank</option><option>Other Banks</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="payment-details" id="pd-cod" style="display:none">
+          <h3><i class="fa fa-truck" style="color:var(--accent);margin-right:8px"></i>Cash on Delivery</h3>
+          <p style="font-size:.88rem;color:var(--text2);line-height:1.7">Pay in cash when your order arrives. No online payment needed.</p>
+          <div style="background:var(--surface);border-radius:10px;padding:12px 16px;margin-top:14px;font-size:.8rem;color:var(--text3)">
+            <i class="fa fa-info-circle" style="color:var(--accent);margin-right:7px"></i>
+            COD available for orders below ₹5,000. ₹40 COD charge applies.
+          </div>
+        </div>
+
+        <div class="payment-details">
+          <h3><i class="fa fa-location-dot" style="color:var(--accent);margin-right:8px"></i>Delivery Address</h3>
+          <div class="payment-row">
+            <div class="payment-field"><label>First Name</label><input type="text" class="payment-input" placeholder="First name" /></div>
+            <div class="payment-field"><label>Last Name</label> <input type="text" class="payment-input" placeholder="Last name" /></div>
+          </div>
+          <div class="payment-field"><label>Address</label><input type="text" class="payment-input" placeholder="Street address, apartment, etc." /></div>
+          <div class="payment-row">
+            <div class="payment-field"><label>City</label>   <input type="text" class="payment-input" placeholder="City" /></div>
+            <div class="payment-field"><label>Pincode</label><input type="text" class="payment-input" placeholder="600001" maxlength="6" /></div>
+          </div>
+          <div class="payment-field"><label>Phone</label><input type="tel" class="payment-input" placeholder="+91 9876543210" /></div>
+        </div>
+
+        <button class="place-order-btn" onclick="placeOrder()">
+          <i class="fa fa-shield-halved"></i> Place Order Securely
+        </button>
+      </div>
+
+      <div class="order-summary-box">
+        <h3>Your Order</h3>
+        <div class="order-items" id="order-items-list"></div>
+        <hr class="order-summary-divider" />
+        <div class="summary-row"><span>Subtotal</span>    <span id="pay-subtotal">₹0</span></div>
+        <div class="summary-row"><span>Shipping</span>    <span style="color:var(--green)">FREE</span></div>
+        <div class="summary-row"><span>Tax (5%)</span>    <span id="pay-tax">₹0</span></div>
+        <div class="summary-row total"><span>Grand Total</span><span id="pay-total">₹0</span></div>
+        <div class="secure-badge"><i class="fa fa-lock"></i> 256-bit SSL Encrypted</div>
+      </div>
+
+    </div>
+  </div>
+</div><!-- /page-payment -->
+
+
+<!-- ==============================================================
+     QUICK VIEW MODAL
+============================================================== -->
+<div class="modal-overlay" id="quick-view-modal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeQuickView()"><i class="fa fa-xmark"></i></button>
+    <div class="modal-img-box" id="modal-img-box"></div>
+    <div class="modal-info">
+      <div class="product-cat" id="modal-cat"></div>
+      <h2 id="modal-name"></h2>
+      <div class="modal-price" id="modal-price"></div>
+      <p id="modal-desc"></p>
+      <span class="size-label">Select Size (UK)</span>
+      <div class="sizes" id="modal-sizes"></div>
+      <div class="modal-actions">
+        <button class="btn-primary" onclick="addToCartFromModal()">
+          <i class="fa fa-bag-shopping"></i> Add to Cart
+        </button>
+        <button class="nav-icon-btn wishlist-btn" id="modal-wishlist" onclick="toggleWishlistModal()">
+          <i class="fa fa-heart"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==============================================================
+     ORDER SUCCESS MODAL
+============================================================== -->
+<div class="success-modal" id="success-modal">
+  <div class="success-box">
+    <div class="success-icon"><i class="fa fa-check"></i></div>
+    <h2>Order Placed!</h2>
+    <p>Your order has been successfully placed. We'll send a confirmation to your email shortly.</p>
+    <div class="order-id">Order ID: <strong id="order-id-display">SOLE-2025-0001</strong></div>
+    <button class="btn-primary" style="width:100%;justify-content:center" onclick="closeSuccessModal()">
+      <i class="fa fa-home"></i> Back to Home
+    </button>
+  </div>
+</div>
+
+
+<!-- ★ Custom JavaScript — must be last so DOM is fully loaded -->
+<script src="main(1).js"></script>
+</body>
+</html>
